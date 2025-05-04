@@ -1,30 +1,8 @@
-import { useState, useEffect } from 'react'
-import { useParams, Link } from 'react-router-dom'
-import { getCharacter } from '../services/swapiService'
+import { Link } from 'react-router-dom'
+import { useCharacterDetail } from '../hooks/useCharacterDetail'
 
 function CharacterDetail() {
-  const { id } = useParams()
-  const [character, setCharacter] = useState(null)
-  const [loading, setLoading] = useState(true)
-  const [error, setError] = useState(null)
-
-  useEffect(() => {
-    const fetchCharacterDetail = async () => {
-      try {
-        setLoading(true)
-        const data = await getCharacter(id)
-        setCharacter(data)
-        setError(null)
-      } catch (err) {
-        setError('Error al cargar los detalles del personaje. Por favor, intenta de nuevo más tarde.')
-        console.error(err)
-      } finally {
-        setLoading(false)
-      }
-    }
-
-    fetchCharacterDetail()
-  }, [id])
+  const { character, loading, error } = useCharacterDetail()
 
   if (loading) {
     return <div className="loading">Cargando detalles del personaje...</div>
@@ -32,17 +10,6 @@ function CharacterDetail() {
 
   if (error || !character) {
     return <div className="error-message">{error || 'No se encontró el personaje'}</div>
-  }
-
-  const formatDate = (dateString) => {
-    const date = new Date(dateString)
-    return date.toLocaleDateString('es-ES', {
-      year: 'numeric',
-      month: 'long',
-      day: 'numeric',
-      hour: '2-digit',
-      minute: '2-digit'
-    })
   }
 
   return (
