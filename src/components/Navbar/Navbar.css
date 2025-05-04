@@ -1,0 +1,23 @@
+.navbar {
+    background-color: #121212;
+    padding: 16px 0;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+  }
+  
+  .navbar-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .navbar-logo {
+    text-decoration: none;
+  }
+  
+  .navbar-logo h1 {
+    margin: 0;
+    font-size: 1.75rem;
+    color: #FFE81F;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+  }

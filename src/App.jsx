@@ -1,8 +1,8 @@
 import { Routes, Route } from 'react-router-dom'
-import Navbar from './components/Navbar'
 import CharacterList from './pages/CharacterList'
 import CharacterDetail from './pages/CharacterDetail'
 import './App.css'
+import Navbar from './components/Navbar/Navbar'
 
 function App() {
   return (
